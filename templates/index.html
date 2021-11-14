@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Cool Website</title>
+</head>
+
+<body>
+	<form method="POST" action="">
+		<div class="form">
+			<h1>Please select your birthday:</h1>
+			<div class="input-section">
+				<input type="date" id="birthday" name="birthday" min="1900-01-01" max="3000-01-01">
+				<input type="time" id="birthtime" name="birthtime" min="00:00" max="23:59">
+				<input type="submit" value="Submit">
+			</div>
+		</div>
+	</form>
+</body>
+
+</html>
+
+<style>
+
+.form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 95vh;
+	flex-direction: column;
+}
+
+</style>

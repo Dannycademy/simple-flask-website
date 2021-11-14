@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>{{days}} days old</title>
+</head>
+
+<canvas id="myCanvas"></canvas>
+
+</html>
+
+<script>
+	function drawBoxes(boxWidth, boxHeight, xgap, ygap, starty, count, sizeChange){
+		for (let i = 0; i < count; i++) {
+
+			if (i == parseInt(count)) boxWidth = (count - parseInt(count)) * boxWidth
+
+			if (x > screenWidth - boxWidth - 30) {
+				x = 0
+				y += boxHeight + ygap
+			}
+			boxWidth += sizeChange
+			boxHeight += sizeChange
+			ctx.fillRect(x, y, boxWidth, boxHeight)
+			x += boxWidth + xgap
+		}
+		y += boxHeight
+		ctx.stroke()
+	}
+
+	var canvas = document.getElementById("myCanvas")
+	var ctx = canvas.getContext("2d")
+	screenWidth = document.documentElement.clientWidth
+	screenHeight = document.documentElement.clientHeight
+	canvas.width = screenWidth
+	canvas.height = screenHeight * 7
+	title1size = 24
+	title2size = 50
+
+	var days = Number("{{days}}")
+	var x = 0; y = title1size
+
+	ctx.font = title1size+"px serif"
+	ctx.fillText("Each box is a day in your life:", x, y)
+	y += 30
+	drawBoxes(boxWidth=10, boxHeight=10, xgap=2, ygap=2, starty=y, count=days, sizeChange=0)
+
+	y += 30+title1size, x = 0
+	ctx.fillText("Each box is a week in your life:", x, y)
+	y += 30
+	drawBoxes(boxWidth = 10, boxHeight = 10, xgap = 2, ygap = 2, starty = y, count = days/7, sizeChange = 0)
+
+	y += 30+title1size, x = 0
+	ctx.fillText("Each box is a year in your life:", x, y)
+	y += 30
+	drawBoxes(boxWidth = 10, boxHeight = 10, xgap = 2, ygap = 2, starty = y, count = days / 365, sizeChange = 1)
+
+	ctx.font = title2size + "px serif"
+	y += 30 + title2size, x = 0
+	ctx.fillText("Time is precious. Don't waste it! :)", x, y)
+
+</script>
+
+<style>
+	html, body {
+		overflow-x: hidden;
+		margin: 0%;
+	}
+	canvas {
+		margin: 10px;
+	}
+</style>
